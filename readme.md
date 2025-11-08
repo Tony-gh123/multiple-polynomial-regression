@@ -81,13 +81,13 @@ Importantly, polynomial regression remains linear in its parameters (meaning the
 
 ## **Multiple Regression**    
 
-Multiple Regression extends linear and polynomial regression by allowing our target variable to depend on multiple input features, enabling the modeling of more complex relationships. For example, say we are given the model:
+Multiple Regression extends linear and polynomial regression by allowing our target variable to depend on multiple input features, enabling the model to capture more complex relationships. For instance, consider the model:  
 
 $$
 y = w_1 x_1 + w_2 x_2^2 + w_3 x_3^3 + b
 $$
 
-Where we are now dealing with squared $x^2$ and cubic $x^3$ features as expressions of our target variable $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output. In practice, polynomial features can be generated either before training (as a preprocessing step) or programmatically within the training pipeline prior to optimization.
+Here, we're incorporating non-linear terms such as $x_2$ squared and $x_3$ cubed directly into the prediction of $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output. In practice, polynomial features can be generated either before training (as a preprocessing step) or programmatically within the training pipeline prior to optimization.
 
 Once data transformations have been applied, we scale each of our feature values as part of pre-training data processing. Feature scaling ensures that features with larger numerical ranges do not dominate the cost function and prevents gradient descent from taking uneven steps during optimization. This helps avoid slow or unstable convergence and, in some cases, prevents the model from failing to reach the function's minimum. [Read Feature Scaling](#feature-scaling)
 
