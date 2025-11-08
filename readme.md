@@ -87,13 +87,13 @@ $$
 y = w_1 x_1 + w_2 x_2^2 + w_3 x_3^3 + b
 $$
 
-Where we are now dealing with squared $x^2$ and cubic $x^3$ features as expressions of our target variable $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output.
+Where we are now dealing with squared $x^2$ and cubic $x^3$ features as expressions of our target variable $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output. In practice, polynomial features can be generated either before training (as a preprocessing step) or programmatically within the training pipeline prior to optimization.
 
-Although having multiple features can help us obtain a more holistic expression of our target variable, it is important to note that before fitting the model, we must perform feature scaling to bring all variables within a similar range. Without scaling, large-magnitude features can distort the cost function’s shape, creating elongated contours that cause gradient descent to zigzag and converge slowly. [Read Feature Scaling](#feature-scaling)
+Once data transformations have been applied, we scale each of our feature values as part of pre-training data processing. Feature scaling ensures that features with larger numerical ranges do not dominate the cost function and prevents gradient descent from taking uneven steps during optimization. This helps avoid slow or unstable convergence and, in some cases, prevents the model from failing to reach the function's minimum. [Read Feature Scaling](#feature-scaling)
 
 ### **Loops to Vectorization**
 
-When we move from single-variable regression to multiple-variable regression, our mathematical expressions remain conceptually identical, but computationally we move from iterative operations (looping through each training example and feature) to matrix operations that can be executed in a single step. This process, called vectorization, placed our target variable $y$ and weights $w$ into a vector and our features into a matrix $X$.
+When we move from single-variable regression to multiple-variable regression, our mathematical expressions remain conceptually identical, but the computations are expressed in vectorized form. Instead of looping through each training example and feature individually, we represent all features as a matrix $X$, the weights as a vector $w$ and the target values as a vector $y$. This allows all predictions and gradients to be computed efficiently using matrix operations rather than explicit iteration.
 
 For a dataset with m examples and n features, a single prediction becomes:
 
@@ -140,7 +140,7 @@ $$
 \hat{Y} = Xw + b\mathbf{1}
 $$
   
-This equation replaces the need for nested loops over every training example and feature, where the operation $Xw$ represents matrix–vector multiplication and $b\mathbf{1}$ represents the bias term broadcasted to all $m$ examples.
+Here, $Xw$ denotes matrix–vector multiplication, and $b\mathbf{1}$ adds the bias term to each of the $m$ predictions.
 
 ### **Vectorized cost function**
 

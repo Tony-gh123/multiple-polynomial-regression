@@ -10,8 +10,8 @@ def compute_cost(X, y, w, b):
     cost = 0.0
 
     f_wb = X @ w + b # predicted value for the i-th example
-    cost_sum = np.sum((f_wb - y) ** 2)    # total squared error
-    cost = (1 / (2 * m)) * cost_sum       # average (half MSE)
+    cost_sum = np.sum((f_wb - y) ** 2)    # sum of squared errors
+    cost = (1 / (2 * m)) * cost_sum       # scaled cost
     
     return cost
 
@@ -23,9 +23,9 @@ def compute_gradient(X, y, w, b):
 
     m = X.shape[0] # number of training examples
 
-    err = (X @ w + b) - y # (m,) vector of errors
-    dj_dw = (X.T @ err) / m # (n,) vector of gradients for weights
-    dj_db = np.sum(err) / m # scalar of gradient for bias
+    err = (X @ w + b) - y # errors
+    dj_dw = (X.T @ err) / m # weight gradients
+    dj_db = np.sum(err) / m # bias gradient
 
     return dj_dw, dj_db
 
@@ -46,8 +46,8 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
     """
 
     J_history = [] # to store cost at each iteration
-    w = w_in.copy() # copy of weights to update
-    b = b_in # copy of bias to update
+    w = w_in.copy() # initial weights
+    b = b_in # initial bias
 
     for i in range(num_iters):
         dj_dw, dj_db = gradient_function(X, y, w, b) # compute gradients
