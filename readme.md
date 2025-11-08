@@ -2,7 +2,7 @@
 
 **DATA**: [UC Irvine Air Quality Dataset](https://archive.ics.uci.edu/dataset/360/air+quality)
 
-**Goal**: Estimate ambient NO₂ concentrations from low-cost sensors.
+**Goal**: Estimating ambient NO₂ concentrations from low-cost sensors.
 
 In this project I developed a multiple polynomial regression model to calibrate low-cost air-quality sensors by mapping their electrical signal in a natural environment to accurately estimate NO₂ concentrations. This approach addresses common challenges in low-cost sensing, including cross-sensitivity, environmental changes, and variable sensor behavior over time. 
 
@@ -20,7 +20,7 @@ RMSE: 26.23 \
 MAE: 19.63  \
 AdjR²: 0.681
 
-Our model achieved an $R^2$ score of 0.681, indicating that approximately 68% of the variance in ground-truth NO₂ concentration is explained by the model’s sensor features. Prediction errors are typically within ~20 µg/m³ of true NO₂ levels (Mean Absolute Error (MAE): 19.63 µg/m³), the higher RMSE (Root Mean Squared Error (RMSE): 26.23 µg/m³) reveals occasional larger errors. The similarity between the Adjusted $R^2$ and the standard $R^2$ suggests that the additional predictors meaningfully contribute to the model without heavily penalizing complexity.
+Our model achieved an $R^2$ score of 0.681, indicating that approximately 68% of the variance in measured NO₂ concentrations is explained by the model’s sensor and modeled features. Prediction errors are typically within ~20 µg/m³ of true NO₂ levels (Mean Absolute Error (MAE): 19.63 µg/m³), the higher RMSE (Root Mean Squared Error (RMSE): 26.23 µg/m³) reveals occasional larger errors. The similarity between the Adjusted $R^2$ and the standard $R^2$ suggests that the additional features included in the final model provide meaningful explanatory value relative to the model’s complexity.
 
 For comparison, Scikit-learn’s ridge regression model achieved a slightly higher R² of 0.747 and a lower RMSE of 22.98 µg/m³, confirming the validity of our implementation. The scikit-learn model performs slightly better due to L2 regularization (Ridge), which penalizes large coefficients and improves generalization, particularly when many polynomial terms are present. In contrast, our model does not regularize, making it more sensitive to multicollinearity and noise. 
 
@@ -89,7 +89,7 @@ $$
 
 Where we are now dealing with squared $x^2$ and cubic $x^3$ features as expressions of our target variable $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output.
 
-Although having multiple features can help us obtain a more holistic expression of our target variable, it is important to note that before fitting the model, we must perform feature scaling to bring all variables within a similar range. Without scaling, large-magnitude features distort the cost function’s contour, creating elongated valleys that cause gradient descent to zigzag and converge slowly. [Read Feature Scaling](#feature-scaling)
+Although having multiple features can help us obtain a more holistic expression of our target variable, it is important to note that before fitting the model, we must perform feature scaling to bring all variables within a similar range. Without scaling, large-magnitude features can distort the cost function’s shape, creating elongated contours that cause gradient descent to zigzag and converge slowly. [Read Feature Scaling](#feature-scaling)
 
 ### **Loops to Vectorization**
 
