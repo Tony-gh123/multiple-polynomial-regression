@@ -4,7 +4,7 @@
 
 **Goal**: Estimating ambient NO₂ concentrations from low-cost sensors.
 
-In this project I developed a multiple polynomial regression model to calibrate low-cost air-quality sensors by mapping their electrical signal in a natural environment to accurately estimate NO₂ concentrations. This approach addresses common challenges in low-cost sensing, including cross-sensitivity, environmental changes, and variable sensor behavior over time. 
+In this project I developed a multiple polynomial regression model to calibrate low-cost air-quality sensors by mapping their electrical signal in a natural environment to accurately estimate NO₂ concentrations. This model can be used to calibrate low-cost sensors and ensures a reasonable response to cross-sensitivity, environmental changes, and variable sensor behavior over time. 
 
 ### **Model Results**
 
