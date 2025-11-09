@@ -75,9 +75,9 @@ $$
 f(x) = w_2 x^2 + w_1 x + b
 $$
 
-Transformations are not limited to $x^2$; it can include any polynomial terms that best fit the data, such as $x^3$, $\sqrt{x}$, $x^8$, etc. Each new term represents a basis function, meaning we derive new features from the original variables to better capture non-linear trends. [Read Feature Engineering](#feature-engineering)
+Transformations are not limited to $x^2$; it can include any polynomial terms that best fit the data, such as $x^3$, $\sqrt{x}$, $x^8$, etc. Each new term represents a basis function, meaning we derive new features from the original variables to better capture non-linear trends. In practice, polynomial features can be generated either before training (as a preprocessing step) or programmatically within the training pipeline prior to optimization. [Read Feature Engineering](#feature-engineering)
 
-Importantly, polynomial regression remains linear in its parameters (meaning the weights $w$ and bias $b$ are still to the first power). This means that we can safely reuse the same cost function, gradient computations, and gradient descent algorithm from linear regression, since optimization is still performed using least squares.
+Importantly, polynomial regression remains linear in its parameters (meaning the weights $w$ and bias $b$ are still to the first power). This means that we can safely reuse the same cost function, gradient computations, and gradient descent algorithm from linear regression, since optimization is still performed using least squares. 
 
 ## **Multiple Regression**    
 
@@ -87,9 +87,9 @@ $$
 y = w_1 x_1 + w_2 x_2^2 + w_3 x_3^3 + b
 $$
 
-Here, we're incorporating non-linear terms such as $x_2$ squared and $x_3$ cubed directly into the prediction of $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output. In practice, polynomial features can be generated either before training (as a preprocessing step) or programmatically within the training pipeline prior to optimization.
+Here, we're incorporating new non-linear terms such as $x_2$ squared and $x_3$ cubed directly into the prediction of $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output.
 
-Once data transformations have been applied, we scale each of our feature values as part of pre-training data processing. Feature scaling ensures that features with larger numerical ranges do not dominate the cost function and prevents gradient descent from taking uneven steps during optimization. This helps avoid slow or unstable convergence and, in some cases, prevents the model from failing to reach the function's minimum. [Read Feature Scaling](#feature-scaling)
+Since our new data contain multiple predictors, we must scale each of our feature values as part of pre-training data processing. Feature scaling ensures that features with larger numerical ranges do not dominate the cost function and prevents gradient descent from taking uneven steps during optimization. This helps avoid slow or unstable convergence and, in some cases, prevents the model from failing to reach the function's minimum. [Read Feature Scaling](#feature-scaling)
 
 ### **Loops to Vectorization**
 
