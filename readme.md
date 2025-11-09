@@ -172,7 +172,7 @@ This computes all errors simultaneously.
 
 ### **Gradient Descent**
 
-Similarly, the gradient of J with respect to w and b can be written compactly as:
+In multiple linear regression, we aim to minimize the cost function $(J(w, b))$, which measures how well our model fits the data. Gradient descent achieves this by iteratively adjusting the weight vector $w$ (for the features) and the bias term $b$ in the direction that reduces $J$. The gradients tell us how to make these adjustments. They can be expressed compactly in vector form:
 
 $$
 \nabla_w J(w,b) = \frac{1}{m} X^T (Xw + b\mathbf{1} - Y)
@@ -192,7 +192,7 @@ $$
 b \leftarrow b - \alpha \frac{\partial J(w,b)}{\partial b}
 $$
 
-Each iteration updates all parameters via vectorized operations, making it efficient for large datasets. In practice, the learning rate 𝛼 is tuned experimentally, if it’s too large, the cost may diverge; if too small, convergence is slow. A good approach is to start small (e.g., 0.01) and monitor cost decay.
+Each iteration updates all parameters simultaneously using these vectorized operations, which is computationally efficient even for large datasets. In practice, the learning rate 𝛼 is tuned experimentally, if it’s too large, the cost may diverge; if too small, convergence is slow. A good approach is to start small (e.g., 0.001) and monitor cost decay.
 
 ### **Closed-Form Solution for Least Squares in Vectorized Form (Normal Equation)**
 
