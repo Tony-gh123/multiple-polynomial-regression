@@ -89,7 +89,7 @@ $$
 
 Here, we're incorporating new non-linear terms such as $x_2$ squared and $x_3$ cubed directly into the prediction of $y$. These new features represent more complex ways to see our data, that is, they provide key information that meaningfully contribute to the output.
 
-Since our new data contain multiple predictors, we must scale each of our feature values as part of pre-training data processing. Feature scaling ensures that features with larger numerical ranges do not dominate the cost function and prevents gradient descent from taking uneven steps during optimization. This helps avoid slow or unstable convergence and, in some cases, prevents the model from failing to reach the function's minimum. [Read Feature Scaling](#feature-scaling)
+Since our new data contains multiple predictors, we scale each of our feature values as part of pre-training data processing. Feature scaling ensures that features with larger numerical ranges do not dominate the cost function and prevents gradient descent from taking uneven steps during optimization. This helps avoid slow or unstable convergence and, in some cases, prevents the model from failing to reach the function's minimum. [Read Feature Scaling](#feature-scaling)
 
 ### **Loops to Vectorization**
 
